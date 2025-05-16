@@ -7,9 +7,12 @@ import { toast } from "react-hot-toast";
 import { setCurrentUser } from "../../store/slices/user";
 import { post } from "../../utils";
 import { login } from "../../store/slices/auth";
+import Loader from "../../components/Loader";
 
 const AuthScreen = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ const AuthScreen = () => {
       ? {}
       : {
           name: Yup.string()
-            .min(20, "Minimum 20 characters")
+            .min(3, "Minimum 3 characters")
             .max(60, "Maximum 60 characters")
             .required("Name is required"),
           address: Yup.string()
@@ -35,6 +38,7 @@ const AuthScreen = () => {
   });
 
   const handleSubmit = async (values) => {
+    setLoading(true);
     const payload = {
       email: values.email,
       password: values.password,
@@ -55,87 +59,106 @@ const AuthScreen = () => {
       }
     } catch (err) {
       toast.error(err.message || "Network error");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br px-4">
-      <div className="w-full max-w-md p-8  bg-white border border-gray-200">
+      <div className="w-full max-w-md p-8 bg-white border border-gray-200">
         <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
           {isLogin ? "Login" : "Register"}
         </h2>
+        <p className="text-xs text-center py-2 my-4 text-blue-600 bg-blue-100">
+          API is deployed on free tier so it may take some time to respond..
+        </p>
 
         <Formik
           initialValues={{ name: "", address: "", email: "", password: "" }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          <Form className="space-y-4">
-            {!isLogin && (
-              <>
-                <div>
-                  <Field
-                    name="name"
-                    placeholder="Full Name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                  <ErrorMessage
-                    name="name"
-                    component="div"
-                    className="text-red-600 text-sm mt-1"
-                  />
-                </div>
+          {() => (
+            <Form className="space-y-4">
+              {!isLogin && (
+                <>
+                  <div>
+                    <Field
+                      name="name"
+                      placeholder="Full Name"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="text-red-600 text-sm mt-1"
+                    />
+                  </div>
 
-                <div>
-                  <Field
-                    name="address"
-                    placeholder="Address"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                  <ErrorMessage
-                    name="address"
-                    component="div"
-                    className="text-red-600 text-sm mt-1"
-                  />
-                </div>
-              </>
-            )}
+                  <div>
+                    <Field
+                      name="address"
+                      placeholder="Address"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <ErrorMessage
+                      name="address"
+                      component="div"
+                      className="text-red-600 text-sm mt-1"
+                    />
+                  </div>
+                </>
+              )}
 
-            <div>
-              <Field
-                name="email"
-                type="email"
-                placeholder="Email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-red-600 text-sm mt-1"
-              />
-            </div>
+              <div>
+                <Field
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="text-red-600 text-sm mt-1"
+                />
+              </div>
 
-            <div>
-              <Field
-                name="password"
-                type="password"
-                placeholder="Password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <ErrorMessage
-                name="password"
-                component="div"
-                className="text-red-600 text-sm mt-1"
-              />
-            </div>
+              <div>
+                <Field
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="text-red-600 text-sm mt-1"
+                />
+              </div>
 
-            <button
-              type="submit"
-              className="w-full py-2 px-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-md transition"
-            >
-              {isLogin ? "Login" : "Sign Up"}
-            </button>
-          </Form>
+              <button
+                type="submit"
+                className={`w-full py-2 px-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-md transition flex items-center justify-center gap-2 ${
+                  loading ? "opacity-70 cursor-not-allowed" : ""
+                }`}
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                   processing...
+                   
+                  </>
+                ) : isLogin ? (
+                  "Login"
+                ) : (
+                  "Sign Up"
+                )}
+              </button>
+            </Form>
+          )}
         </Formik>
 
         <div className="text-center mt-6 text-sm text-gray-600">
