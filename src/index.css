@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* src/index.css */
 @font-face {
   font-family: 'roboto';
   src: url('./assets/fonts/roboto.ttf') format('truetype');
@@ -10,4 +9,8 @@
 
 body {
   font-family: 'roboto', sans-serif;
+}
+@theme {
+  --color-primary: oklch(0.05 0 0);         /* Near black */
+  --color-primary-dark: oklch(0.02 0 0);    /* Deeper black */
 }
