@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <header className="bg-white shadow px-6 py-4 flex justify-between items-center">
-      <h1 className="text-sm bg-primary rounded-b-full px-2 font-semibold capitalize ps-18 md:ps-0">
+      <h1 className="text-sm bg-primary text-white p-2 px-2 font-semibold capitalize ">
         {role} dashboard
       </h1>
       <div className="text-gray-500 hidden md:visible text-sm">

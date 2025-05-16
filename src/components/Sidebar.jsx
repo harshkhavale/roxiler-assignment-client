@@ -29,11 +29,8 @@ const Sidebar = () => {
         </button>
       </div>
 
-      <aside className="hidden md:flex flex-col w-64 h-screen bg-gray-900 text-white p-5">
-        <div className="text-2xl font-bold capitalize mb-10">
-          <span className="text-white">RateHub</span>
-        </div>
-
+      <aside className="hidden md:flex flex-col w-64 pt-20 h-screen bg-primary text-white p-5">
+      
         <ul className="space-y-4">
           {options.map((opt, idx) => (
             <li key={idx}>
@@ -55,7 +52,7 @@ const Sidebar = () => {
         <div className="pt-6 mt-auto">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 px-3 py-2 rounded-md border-2 border-white hover:bg-red-600 w-full transition-colors"
+            className="flex items-center gap-3 px-3 py-2 rounded-md border-2 border-white hover:bg-white hover:text-black w-full transition-colors"
           >
             <LogOut />
             Logout
@@ -103,7 +100,7 @@ const Sidebar = () => {
                   handleLogout();
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-3 px-3 py-2 rounded-md border-2 border-white hover:bg-red-600 w-full transition-colors"
+                className="flex items-center gap-3 px-3 py-2 rounded-md border-2 border-white hover:bg-white hover:text-black w-full transition-colors"
               >
                 <LogOut />
                 Logout

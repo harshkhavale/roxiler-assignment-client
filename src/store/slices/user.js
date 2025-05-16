@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentUser: undefined,
+  currentUser: null,
 };
 
 const userSlice = createSlice({
@@ -12,7 +12,7 @@ const userSlice = createSlice({
       state.currentUser = action.payload;
     },
     logoutUser: (state) => {
-      state.currentUser = undefined;
+      state.currentUser = null;
     },
   },
 });

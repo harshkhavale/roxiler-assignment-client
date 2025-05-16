@@ -5,6 +5,9 @@ import AuthPage from "../screens/common/Auth";
 
 import { ROLES, hasRole } from "../utils";
 import AuthScreen from "../screens/common/Auth";
+import PasswordResetForm from "../components/PasswordResetForm";
+import DashboardLayout from "../components/Layout";
+import UserDashboard from "../screens/user/Dashboard";
 
 const RoleProtectedRoute = ({ allowedRoles, children }) => {
   const role = useSelector((state) => state.auth.role);
@@ -33,7 +36,18 @@ const AppRoutes = () => {
           )
         }
       />
-
+         <Route
+        path="/dashboard/user"
+        element={
+          <RoleProtectedRoute allowedRoles={[ROLES.USER]}>
+            <DashboardLayout />
+          </RoleProtectedRoute>
+        }
+      >
+        <Route index element={<UserDashboard />} />
+      
+        <Route path="change-password" element={<PasswordResetForm />} />
+      </Route>
       <Route path="/" element={<AuthScreen />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
