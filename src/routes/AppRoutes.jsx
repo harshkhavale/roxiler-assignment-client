@@ -11,6 +11,8 @@ import UserDashboard from "../screens/user/Dashboard";
 import AdminDashboard from "../screens/admin/Dashboard";
 import AdminStores from "../screens/admin/Stores";
 import AdminUsers from "../screens/admin/Users";
+import OwnerDashboard from "../screens/owner/Dashboard";
+import OwnerRatings from "../screens/owner/Ratings";
 
 const RoleProtectedRoute = ({ allowedRoles, children }) => {
   const role = useSelector((state) => state.auth.role);
@@ -63,6 +65,18 @@ const AppRoutes = () => {
         <Route path="stores" element={<AdminStores />} />
         <Route path="users" element={<AdminUsers />} />
 
+        <Route path="change-password" element={<PasswordResetForm />} />
+      </Route>
+      <Route
+        path="/dashboard/owner"
+        element={
+          <RoleProtectedRoute allowedRoles={[ROLES.OWNER]}>
+            <DashboardLayout />
+          </RoleProtectedRoute>
+        }
+      >
+        <Route index element={<OwnerDashboard />} />
+        <Route path="ratings" element={<OwnerRatings />} />
         <Route path="change-password" element={<PasswordResetForm />} />
       </Route>
       <Route path="/" element={<AuthScreen />} />
