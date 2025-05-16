@@ -1,12 +1,85 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Roxiller Assignment - Client
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is the **frontend** of the application, built with **React**, **Vite**, and **Tailwind CSS**. It provides an intuitive user interface for administrators, store owners, and users to interact with the rating system.
 
-## Expanding the ESLint configuration
+## Visit Application
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[Deployed on Vercel](https://roxiler-assignment-client.vercel.app/)
+
+---
+
+## Tech Stack
+
+* **React + Vite**
+* **Tailwind CSS**
+* **Formik & Yup** (Form Handling & Validation)
+* **React Router DOM**
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/harshkhavale/roxiller-assignment-client.git
+cd roxiller-assignment-client/client
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment Variables
+
+Create a `.env` file in the root of the `client` directory with the following:
+
+```env
+VITE_API_BASE_URL="http://localhost:5000/api"
+```
+
+> Make sure the backend server is running and the URL matches your backend configuration.
+
+### 4. Run the Application
+
+```bash
+npm run dev
+```
+
+The frontend will be accessible at `http://localhost:5173` (or the configured Vite dev port).
+
+---
+
+## Project Structure
+
+```
+client/
+├── public/
+├── src/
+│   ├── assets/             # Images and static files
+│   ├── components/         # Reusable UI components
+│   ├── screens/              # Route-based pages for each user role
+│   ├── store/           # API service handlers
+│   ├── utils/              # Utility functions
+│   ├── routes/             # App routing configuration
+│   ├── App.jsx             # Main app component
+│   └── main.jsx            # Application entry point
+├── index.html
+```
+
+---
+
+## Key Features
+
+* Responsive and modern UI with Tailwind CSS
+* Role-based navigation and routing
+* Secure authentication using JWT tokens
+* Form validation using Formik and Yup
+* Search, sort, and filter functionality for listings
+* Real-time feedback for user interactions
+* Integrated error handling and loading states
+
