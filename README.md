@@ -7,6 +7,16 @@ This is the **frontend** of the application, built with **React**, **Vite**, and
 ## Visit Application
 
 [Deployed on Vercel](https://roxiler-assignment-client.vercel.app/)
+---
+## Demo Credentials
+
+Use the following credentials to test different user roles:
+
+| Role         | Email              | Password   |
+|--------------|--------------------|------------|
+| **Admin**     | admin@gmail.com     | Admin@123  |
+| **Store Owner** | owner1@gmail.com    | Owner@123  |
+| **Normal User** | user1@gmail.com     | User@123   |
 
 ---
 
