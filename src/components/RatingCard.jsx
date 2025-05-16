@@ -1,27 +1,34 @@
-import { StarIcon } from "lucide-react";
+import { MessageSquareMore, Pencil } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
 
 const RatingCard = ({ rating, currentUserId, onUpdate }) => {
   const userId = useSelector((state) => state.users.currentUser.id);
-
   const isUserRating = rating.user_id === userId;
+
   return (
-    <div className="mb-4 border-b pb-2">
-      <p className="text-sm flex gap-2">
-        <StarIcon size={18} /> {rating.rating}/5
-      </p>
-      <p className="text-sm text-gray-700">{rating.comment}</p>
-      <p className="text-xs text-gray-400">
-        {new Date(rating.createdAt).toLocaleString()}
-      </p>
+    <div className="mb-6 p-4 rounded-lg border border-gray-200 shadow-sm bg-white transition hover:shadow-md">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2 text-yellow-600 font-medium">
+          <MessageSquareMore size={18} />
+          <span>{rating.rating} / 5</span>
+        </div>
+
+        <span className="text-xs text-gray-500">
+          {new Date(rating.createdAt).toLocaleString()}
+        </span>
+      </div>
+
+      {rating.comment && (
+        <p className="text-gray-700 text-sm italic mb-3">“{rating.comment}”</p>
+      )}
 
       {isUserRating && (
         <button
-          className="mt-2 text-blue-600 text-sm underline hover:text-blue-800"
           onClick={() => onUpdate(rating)}
+          className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 underline hover:no-underline transition"
         >
-          Update Rating
+          <Pencil size={14} /> Update Rating
         </button>
       )}
     </div>

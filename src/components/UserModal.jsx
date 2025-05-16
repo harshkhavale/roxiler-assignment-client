@@ -9,7 +9,7 @@ const UserModal = ({
   onUserUpdated,
   userToEdit,
 }) => {
-  const [user, setUser] = useState<User>({
+  const [user, setUser] = useState({
     name: "",
     email: "",
     address: "",
@@ -31,7 +31,7 @@ const UserModal = ({
           Authorization: `Bearer ${token}`,
         });
       } else {
-        await post("/admin/users", user, {
+        await post("/user", user, {
           Authorization: `Bearer ${token}`,
         });
       }

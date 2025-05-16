@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import clsx from "clsx";
 import Loader from "../../components/Loader";
 import UserModal from "../../components/UserModal";
+import { Edit } from "lucide-react";
 
 export default function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -161,9 +162,9 @@ export default function AdminUsers() {
                     <td className="border px-4 py-2">
                       <button
                         onClick={() => handleEditUser(user)}
-                        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                        className=" text-primary rounded-md hover:text-blue-600"
                       >
-                        Edit
+                        <Edit/>
                       </button>
                     </td>
                   </tr>
