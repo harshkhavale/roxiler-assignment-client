@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import AuthPage from "../screens/Auth";
+import AuthPage from "../screens/common/Auth";
 
 import { ROLES, hasRole } from "../utils";
-import AuthScreen from "../screens/Auth";
+import AuthScreen from "../screens/common/Auth";
 
 const RoleProtectedRoute = ({ allowedRoles, children }) => {
   const role = useSelector((state) => state.auth.role);

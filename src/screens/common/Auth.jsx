@@ -4,9 +4,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { setCurrentUser } from "../store/slices/user";
-import { post } from "../utils";
-import { login } from "../store/slices/auth";
+import { setCurrentUser } from "../../store/slices/user";
+import { post } from "../../utils";
+import { login } from "../../store/slices/auth";
 
 const AuthScreen = () => {
   const [isLogin, setIsLogin] = useState(true);
