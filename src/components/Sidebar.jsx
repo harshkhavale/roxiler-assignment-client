@@ -52,7 +52,7 @@ const Sidebar = () => {
         <div className="pt-6 mt-auto">
           <button
             onClick={handleLogout}
-            className="flex items-center gap-3 px-3 py-2 rounded-md border-2 border-white hover:bg-white hover:text-black w-full transition-colors"
+            className="flex items-center gap-3 px-3 py-2 rounded-md  border-white hover:bg-white hover:text-black w-full transition-colors"
           >
             <LogOut />
             Logout
@@ -100,7 +100,7 @@ const Sidebar = () => {
                   handleLogout();
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-3 px-3 py-2 rounded-md border-2 border-white hover:bg-white hover:text-black w-full transition-colors"
+                className="flex items-center gap-3 px-3 py-2 rounded-md  border-white hover:bg-white hover:text-black w-full transition-colors"
               >
                 <LogOut />
                 Logout

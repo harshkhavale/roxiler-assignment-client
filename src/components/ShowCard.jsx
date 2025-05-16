@@ -1,4 +1,4 @@
-import { StarIcon, UsersIcon } from "lucide-react";
+import { DeleteIcon, Edit, StarIcon, TrashIcon, UsersIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { get } from "../utils";
@@ -8,13 +8,12 @@ const ShowCard = ({ store, onEdit, onDelete, onAddRating, onViewRatings }) => {
 
   const role = useSelector((state) => state.auth.role);
   const [rating, setRating] =
-    useState <
-    RatingData >
+    useState(
     {
       averageRating: "0.00",
       totalRatings: 0,
-    };
-  const [error, setError] = (useState < string) | (null > null);
+    });
+  const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const ShowCard = ({ store, onEdit, onDelete, onAddRating, onViewRatings }) => {
   }, [store.store_id, token]);
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 w-full max-w-md">
+    <div className="bg-white rounded-lg border p-4 w-full max-w-md">
       <img
         src={store.image}
         alt={store.name}
@@ -70,25 +69,25 @@ const ShowCard = ({ store, onEdit, onDelete, onAddRating, onViewRatings }) => {
         )}
       </div>
 
-      <div className="mt-4 flex gap-3">
+      <div className="mt-4 flex items-center gap-3">
         {(role === "admin" || role === "owner") && (
           <>
             <button
               className="text-sm text-blue-600 hover:underline"
               onClick={() => onEdit(store)}
             >
-              Edit
+              <Edit/>
             </button>
             <button
               className="text-sm text-red-600 hover:underline"
               onClick={() => onDelete?.(store.store_id)}
             >
-              Delete
+              <TrashIcon/>
             </button>
           </>
         )}
         <button
-          className="text-sm text-purple-600  cursor-pointer"
+          className="text-sm bg-primary text-white p-2 rounded-xl  cursor-pointer"
           onClick={() => onViewRatings?.(store)}
         >
           View All Ratings

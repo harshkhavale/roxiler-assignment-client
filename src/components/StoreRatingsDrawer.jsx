@@ -3,6 +3,7 @@ import { get, put } from "../utils";
 import { useSelector } from "react-redux";
 import RatingCard from "./RatingCard";
 import RatingModal from "./RatingForm";
+import { X } from "lucide-react";
 
 const StoreRatingsDrawer = ({
   storeId,
@@ -67,7 +68,7 @@ const StoreRatingsDrawer = ({
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-semibold">Ratings</h2>
           <button onClick={onClose} className="text-red-500">
-            Close
+            <X/>
           </button>
         </div>
         <div className="p-4 overflow-y-auto max-h-full">
