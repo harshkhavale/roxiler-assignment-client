@@ -2,8 +2,12 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="flex justify-center items-center py-10">
-      <div className="w-12 h-12 border-4 border-primary border-dashed rounded-full animate-spin"></div>
+    <div className="flex justify-center items-center h-40">
+      <div className="flex space-x-2">
+        <div className="w-4 h-4 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+        <div className="w-4 h-4 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+        <div className="w-4 h-4 bg-primary rounded-full animate-bounce"></div>
+      </div>
     </div>
   );
 };
