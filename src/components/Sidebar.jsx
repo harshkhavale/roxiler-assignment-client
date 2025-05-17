@@ -67,9 +67,9 @@ const Sidebar = () => {
             onClick={() => setIsOpen(false)}
           />
 
-          <aside className="relative z-50 w-64 bg-gray-900 text-white p-5 h-full">
-            <div className="flex items-center justify-between mb-10">
-              <div className="text-2xl font-bold">{role} Dashboard</div>
+          <aside className="relative z-50 w-full bg-primary text-white p-5 h-full">
+            <div className="flex items-center gap-4 justify-between mb-10">
+              <div className=" bg-white text-base p-2 text-black capitalize font-bold">{role} Dashboard</div>
               <button onClick={() => setIsOpen(false)} aria-label="Close Menu">
                 <X />
               </button>

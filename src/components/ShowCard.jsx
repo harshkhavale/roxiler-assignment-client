@@ -42,13 +42,13 @@ import {
     }, [store.store_id, token]);
   
     return (
-      <div className="bg-white border rounded-xl p-5 w-full max-w-md transition hover:shadow-lg">
+      <div className="bg-white border rounded-xl w-full max-w-md transition hover:shadow-lg">
         <img
           src={store.image}
           alt={store.name}
-          className="w-full h-56 object-cover rounded-lg mb-4"
+          className="w-full h-56 object-cover rounded-t-lg mb-4"
         />
-  
+  <div className="p-5">
         <h3 className="text-xl font-bold mb-1">{store.name}</h3>
         <p className="text-sm text-gray-600">{store.address}</p>
         <p className="text-xs text-gray-400 mb-3">{store.email}</p>
@@ -108,7 +108,7 @@ import {
               Add Rating
             </button>
           )}
-        </div>
+        </div></div>
       </div>
     );
   };
